@@ -23,4 +23,7 @@ class ProductPageLocators():
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
 
 class BasketPageLocators():
-    EMPTY_BASKET_MESSAGE = (By.CSS_SELECTOR, ".content p")
+    EMPTY_BASKET_MESSAGE = (
+        By.XPATH,
+        "//p[contains(text(), 'Your basket is empty')]"
+    )
