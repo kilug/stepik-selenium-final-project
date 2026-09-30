@@ -24,10 +24,17 @@ class BasePage():
 
         return True
 
+
     def should_be_login_link(self):
         assert self.is_element_present(
             *BasePageLocators.LOGIN_LINK
         ), "Login link is not presented"
+
+    def go_to_login_page(self):
+        login_link = self.browser.find_element(
+            *BasePageLocators.LOGIN_LINK
+        )
+        login_link.click()
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
