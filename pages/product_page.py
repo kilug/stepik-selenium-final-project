@@ -35,14 +35,12 @@ class ProductPage(BasePage):
         product_name = self.browser.find_element(
             *ProductPageLocators.PRODUCT_NAME
         )
-
         return product_name.text
 
     def get_product_price(self):
         product_price = self.browser.find_element(
             *ProductPageLocators.PRODUCT_PRICE
         )
-
         return product_price.text
 
     def should_not_be_success_message(self):

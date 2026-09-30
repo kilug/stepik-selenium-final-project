@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from selenium import webdriver
 
@@ -26,3 +28,22 @@ def browser(request):
     yield browser
 
     browser.quit()
+
+
+@pytest.fixture
+def user(browser):
+    email = str(time.time()) + "@fakemail.org"
+    password = "Password123!"
+
+    from pages.login_page import LoginPage
+
+    login_page = LoginPage(
+        browser,
+        "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
+    )
+
+    login_page.open()
+    login_page.register_new_user(email, password)
+    login_page.should_be_authorized_user()
+
+    return email, password
